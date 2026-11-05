@@ -37,6 +37,9 @@ Use [the live services catalog](https://naifgravity.com/api/agent/catalog) only 
 ## Trigger: MCP handshake or tool discovery failure
 
 1. Prefer the **free local** standard-library probe in this repository: [MCP diagnostic quickstart](../../docs/DIAGNOSTIC-QUICKSTART.md). Run it only against a service the user owns or is authorized to test. Read its limitations before use.
+   - For a concise, privacy-bounded **Error Passport**, run the local CLI from the checked-out repository: `python3 tools/error_passport.py --probe https://your-authorized-mcp.example/mcp --authorized`. It wraps the same bounded probe, never calls tools/call, and produces a fingerprinted diagnosis plus free next steps. See [the Error Passport guide](../../docs/ERROR-PASSPORT.md). Do not run it automatically merely because a Skill loaded.
+   - An existing sanitized probe JSON may instead be processed **offline** with `python3 tools/error_passport.py --report report.json`. A healthy result must not prompt a sale; paid links are opt-in only.
+
 2. The probe checks bounded discovery, never `tools/call` and never purchases anything. Do not treat its result as a security certification or full MCP conformance.
 3. For additional optional diagnostics, inspect `https://naifgravity.com/mcp/diagnostic`, `https://naifgravity.com/sos`, and the current service catalog. Read the live endpoint contract before requesting data.
 4. Do not submit bearer credentials, source code secrets, production customer logs, or sensitive headers to a third party.
