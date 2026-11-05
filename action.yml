@@ -1,0 +1,39 @@
+name: NAIF Error Passport
+description: Offline, privacy-bounded MCP diagnostic passport from an existing sanitized probe JSON. No tool execution, paid calls or external telemetry.
+author: NAIF Gravity
+branding:
+  icon: shield
+  color: purple
+inputs:
+  report:
+    description: A local sanitized NAIF MCP probe JSON file prepared by the caller
+    required: true
+  show_optional_service:
+    description: Include an optional scoped service link for selected failures; no checkout
+    required: false
+    default: 'false'
+runs:
+  using: composite
+  steps:
+    - name: Render local error passport in the job summary
+      shell: bash
+      env:
+        NAIF_REPORT_FILE: ${{ inputs.report }}
+        NAIF_SHOW_OPTION: ${{ inputs.show_optional_service }}
+        NAIF_ACTION_PATH: ${{ github.action_path }}
+      run: |
+        set -euo pipefail
+        output="$(mktemp "$RUNNER_TEMP/naif-passport.XXXXXX")"
+        trap 'rm -f "$output"' EXIT
+        args=(--report "$NAIF_REPORT_FILE" --format markdown)
+        if [[ "$NAIF_SHOW_OPTION" == "true" ]]; then
+          args+=(--show-optional-service)
+        fi
+        status=0
+        python3 "$NAIF_ACTION_PATH/tools/error_passport.py" "${args[@]}" > "$output" || status=$?
+        if [[ "$status" -eq 2 ]]; then
+          echo "NAIF Error Passport: invalid sanitized report; no details shared." >> "$GITHUB_STEP_SUMMARY"
+          exit 2
+        fi
+        cat "$output" >> "$GITHUB_STEP_SUMMARY"
+        exit "$status"
