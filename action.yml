@@ -1,5 +1,5 @@
 name: NAIF Error Passport
-description: Offline, privacy-bounded MCP diagnostic passport from an existing sanitized probe JSON. No tool execution, paid calls or external telemetry.
+description: Create a private, offline MCP diagnostic report in GitHub Actions. No network calls, payment, or secrets.
 author: NAIF Gravity
 branding:
   icon: shield
