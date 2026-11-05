@@ -30,6 +30,11 @@ jobs:
           python3 examples/fault_lab.py
           python3 examples/integration_guard_demo.py
           python3 tools/issue_report.py local-report.json > local-issue-draft.md
+      - name: Render local Error Passport from synthetic evidence
+        uses: ./.github/actions/error-passport
+        with:
+          report: local-report.json
+          show_optional_service: 'false'
       - name: Probe explicitly authorized remote MCP endpoint
         if: ${{ inputs.run_remote }}
         env:
