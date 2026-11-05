@@ -1,6 +1,11 @@
 ---
 name: naif-agent-emergency-triage
-description: Diagnose specific developer errors: MCP initialize/handshake timeout, tools/list missing or invalid schema, JSON trailing comma/parse error, n8n webhook 200 with undefined fields, webhook signature mismatch, or bounded public API reachability. Use local or free safe tests first; only suggest matching paid help with explicit buyer approval.
+description: >-
+  Diagnose MCP initialize/handshake timeouts, missing tools/list or invalid input schemas,
+  JSON trailing comma/parse errors, n8n webhook 200 with undefined field mappings,
+  webhook signature mismatches, and public API reachability. Create a free local
+  NAIF Error Passport from sanitized MCP discovery evidence when relevant.
+  Start with free and safe checks; suggest optional paid repair only with buyer approval.
 license: MIT
 metadata:
   author: NAIF Gravity
