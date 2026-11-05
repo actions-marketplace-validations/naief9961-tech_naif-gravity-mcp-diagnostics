@@ -52,6 +52,21 @@ This creates a GitHub Step Summary without contacting a remote endpoint or start
 
 **Do not run untrusted pull-request code with repository secrets, auto-probe third-party servers, or publish private diagnostics.** Do not turn the existing manual workflow into an automatic deployment or paid transaction. GitHub Actions may have usage quotas in the user's account.
 
+## Portable GitHub Action for another repository
+
+The repository root includes a **standalone, offline composite action** at [action.yml](../action.yml). A GitHub workflow in another repository can call it against an **existing sanitized report** produced under that repository's authorization:
+
+    - name: Review MCP discovery failure
+      if: always()
+      uses: naief9961-tech/naif-gravity-mcp-diagnostics@ea39a4b7bd80819e2ad53ed9f648b8ecf89391e0
+      with:
+        report: sanitized-report.json
+        show_optional_service: 'false'
+
+The full commit reference above pins the exact public source that introduced the root action. Review and update the pin when a later version is desired. The report path is local to the **calling job**, and the job must create that file before calling the action. The action reads it, generates a safe job summary, and preserves failure as a nonzero step status; no network, checkout or external account is required by the action itself.
+
+This is **GitHub-action compatible**, not a claim of GitHub Marketplace publication. Marketplace listing requires a release and any applicable publisher agreements, which have not been completed.
+
 ## Local verification
 
     python3 -m unittest discover -s tests -p 'test_*.py' -v
