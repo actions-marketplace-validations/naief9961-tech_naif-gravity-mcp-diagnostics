@@ -63,6 +63,8 @@ The repository root includes a **standalone, offline composite action** at [acti
         report: sanitized-report.json
         show_optional_service: 'false'
 
+For a readable version reference instead of the full commit SHA, use `naief9961-tech/naif-gravity-mcp-diagnostics@v0.2.0`, which was publicly released after passing 39 local tests. Pinning a reviewed full commit SHA remains preferable for stricter supply-chain control.
+
 The full commit reference above pins the exact public source that introduced the root action. Review and update the pin when a later version is desired. The report path is local to the **calling job**, and the job must create that file before calling the action. The action reads it, generates a safe job summary, and preserves failure as a nonzero step status; no network, checkout or external account is required by the action itself.
 
 This is **GitHub-action compatible**, not a claim of GitHub Marketplace publication. Marketplace listing requires a release and any applicable publisher agreements, which have not been completed.
