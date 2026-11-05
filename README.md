@@ -32,6 +32,18 @@ A successful HTTP status does not prove that an MCP tool or downstream workflow 
 
 For compatible coding agents, the [free-first emergency-triage Skill](skills/naif-agent-emergency-triage/SKILL.md) describes when to use each diagnostic and when to **stop without buying anything**. A paid service is optional, separately scoped and requires the buyer's explicit authorization; current eligibility and pricing are defined only by [the live catalog](https://naifgravity.com/api/agent/catalog).
 
+## NAIF Error Passport — local evidence card (free alpha)
+
+The existing MCP diagnostic probe now has an **opt-in, local Error Passport**. It turns a sanitized discovery report into a small fingerprinted evidence card with free next steps. A healthy result never recommends a paid service; a failed result is a diagnosis, **not** a completed repair. No external logging, payment, tool execution or customer data upload.
+
+Run from the checked-out repository:
+
+    python3 tools/error_passport.py --probe https://your-authorized-mcp.example/mcp --authorized
+    # Offline from an existing sanitized report (no network):
+    python3 tools/error_passport.py --report sanitized-report.json --format markdown
+
+Only use an endpoint you own or are authorized to test. The command requires Python 3.10+ and no extra packages. It is **not yet published to npm or PyPI**. Read the [Error Passport CLI/CI guide](docs/ERROR-PASSPORT.md) and use the [optional offline GitHub Action](.github/actions/error-passport/action.yml) to display a sanitized passport in manual CI summaries. Remote probing is never automatic.
+
 ## Try it
 
 Requires Python 3.10 or later. No packages or account required for the local examples.
