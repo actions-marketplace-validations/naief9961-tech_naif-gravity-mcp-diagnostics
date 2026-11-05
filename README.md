@@ -34,6 +34,8 @@ For compatible coding agents, the [free-first emergency-triage Skill](skills/nai
 
 ## NAIF Error Passport — local evidence card (free alpha)
 
+**Current public release:** [v0.2.0 — NAIF Error Passport](https://github.com/naief9961-tech/naif-gravity-mcp-diagnostics/releases/tag/v0.2.0). The official Skills CLI can discover this repository's Skill without installing it: `DISABLE_TELEMETRY=1 npx skills add naief9961-tech/naif-gravity-mcp-diagnostics --list`.
+
 The existing MCP diagnostic probe now has an **opt-in, local Error Passport**. It turns a sanitized discovery report into a small fingerprinted evidence card with free next steps. A healthy result never recommends a paid service; a failed result is a diagnosis, **not** a completed repair. No external logging, payment, tool execution or customer data upload.
 
 Run from the checked-out repository:
