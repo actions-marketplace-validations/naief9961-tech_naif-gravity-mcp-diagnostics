@@ -44,6 +44,16 @@ Run from the checked-out repository:
 
 Only use an endpoint you own or are authorized to test. The command requires Python 3.10+ and no extra packages. It is **not yet published to npm or PyPI**. Read the [Error Passport CLI/CI guide](docs/ERROR-PASSPORT.md) and use the [optional offline GitHub Action](.github/actions/error-passport/action.yml) to display a sanitized passport in manual CI summaries. Remote probing is never automatic.
 
+### Install the free troubleshooting Skill in a coding agent
+
+The Skill is already in this public repository. Developers using the [skills.sh CLI](https://www.skills.sh/docs/cli) can choose to install the instructions for their own agent:
+
+    npx skills add naief9961-tech/naif-gravity-mcp-diagnostics --skill naif-agent-emergency-triage
+
+This installs the **Skill instructions**; it does not automatically install the separate Python CLI or run a probe. For the working CLI, clone this repository and use the Error Passport commands above. The current skills CLI requires a supported Node.js version and may collect anonymous installation telemetry unless disabled; consult its documentation before opting in. No installer or buyer contacts are initiated by this README.
+
+For reusable workflows in other GitHub repositories, the [root Error Passport action](action.yml) accepts an existing sanitized JSON report. See the [portable-action instructions](docs/ERROR-PASSPORT.md); it does not probe endpoints automatically and is **not yet published as a GitHub Marketplace listing**.
+
 ## Try it
 
 Requires Python 3.10 or later. No packages or account required for the local examples.
