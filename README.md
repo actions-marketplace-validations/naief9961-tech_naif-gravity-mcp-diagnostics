@@ -18,6 +18,20 @@ A Python standard-library probe for **handshake-era MCP Streamable HTTP discover
 
 **Related field reports:** [NAIF Gravity's GitHub Issue Radar — MCP compatibility and x402 header failures (14 Oct 2026)](https://github.com/naief9961-tech/ai-growth-engine/blob/main/docs/GITHUB-ISSUE-RADAR-2026-10-14.md) offers source-linked repair plans. These are external issue analyses, not patches implemented by this probe; this tool does **not** handle stdio.
 
+## Match the failing boundary first
+
+A successful HTTP status does not prove that an MCP tool or downstream workflow worked. Use the smallest *local* check that matches the observed failure before asking an agent to invoke any remote service.
+
+| What the developer sees | First free check | What this repository can establish |
+| --- | --- | --- |
+| `MCP initialize` times out, a Streamable HTTP handshake fails, or `tools/list` is missing | Run the [bounded Python MCP discovery probe](docs/DIAGNOSTIC-QUICKSTART.md) on an endpoint you own or have authorization to test | Initialize/session/tools-list evidence only; no `tools/call` |
+| A tool's input schema is rejected after discovery | Compare the advertised descriptor with a minimal synthetic argument and the client's supported schema features | The probe collects bounded tool descriptors; it does not fully validate client-specific schema dialects |
+| n8n webhook returns `200`, but the next node reads `undefined` from `body` | See the [field-path troubleshooting guide](https://naifgravity.com/discover/n8n-webhook-field-mapping) and test with synthetic fixtures | Mapping fault; **not** fixed by the MCP discovery probe |
+| Webhook HMAC signature mismatch or duplicate delivery after retry | Compare raw signed bytes, timestamp and replay policy using the [webhook signature guide](https://naifgravity.com/discover/webhook-signature-mismatch) | Signature/retry fault; not a field-mapping purchase |
+| JSON trailing comma or parse failure | Use a local JSON parser and the [syntax guide](https://naifgravity.com/discover/json-trailing-comma) | A parse result is not complete schema validation |
+
+For compatible coding agents, the [free-first emergency-triage Skill](skills/naif-agent-emergency-triage/SKILL.md) describes when to use each diagnostic and when to **stop without buying anything**. A paid service is optional, separately scoped and requires the buyer's explicit authorization; current eligibility and pricing are defined only by [the live catalog](https://naifgravity.com/api/agent/catalog).
+
 ## Try it
 
 Requires Python 3.10 or later. No packages or account required for the local examples.
