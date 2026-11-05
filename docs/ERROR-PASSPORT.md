@@ -76,6 +76,12 @@ This is **GitHub-action compatible**, not a claim of GitHub Marketplace publicat
 
 The tests include loopback healthy, wrong JSON-RPC ID and invalid tool-schema fixtures; invalid reports, attempted secret injection, and opt-in requirements are tested without querying production systems.
 
+## Optional explanation in ASI:One (after local diagnosis)
+
+If you already generated and reviewed a **sanitized NAIF Error Passport v0.2.1 JSON report**, you may optionally open [ASI:One](https://asi1.ai/) and search for **`@naif-json-api-tools`** (NAIF Gravity JSON & API Tools). The agent can explain a supported **MCP discovery diagnosis category** and suggest a free next check. This is optional: the local CLI and guide work without Agentverse, and no chat interaction is required.
+
+**Privacy and scope:** Only share a small, already-redacted report after reviewing the chat provider's data-handling terms. Do not paste API keys, credentials, production logs, customer records, private endpoints or signed requests. The chat does **not** run the MCP probe, execute `tools/call`, verify server identity, repair production, collect payments or make purchases. Even a healthy discovery result does not prove tool execution and is **not** a reason to buy a repair. For the authoritative local utility, use the [free v0.2.1 release](https://github.com/naief9961-tech/naif-gravity-mcp-diagnostics/releases/tag/v0.2.1).
+
 ## Measuring whether distribution works
 
 The CLI and composite action alone do **not** prove discoverability or sales. Count only independently verifiable voluntary installs, forks, stars or citations when observable; do not treat clones or self-tests as buyers. Track referral traffic and *separately verified* purchases only with valid attribution and privacy controls. Never manufacture customer demand, installs, third-party reviews or paid receipts.
