@@ -56,6 +56,8 @@ This installs the **Skill instructions**; it does not automatically install the 
 
 For reusable workflows in other GitHub repositories, the [root Error Passport action](action.yml) accepts an existing sanitized JSON report. See the [portable-action instructions](docs/ERROR-PASSPORT.md); it does not probe endpoints automatically and has a separate GitHub Marketplace publication status; **publishing a repository release alone does not prove Marketplace listing**. Check the live Marketplace listing independently.
 
+**Optional free chat explanation:** After generating a sanitized [Error Passport](docs/ERROR-PASSPORT.md) locally, you may ask **`@naif-json-api-tools`** on [ASI:One](https://asi1.ai/) to explain its MCP discovery category. The chat never runs the probe, executes tools, repairs servers or pays for anything. Keep credentials and private evidence out of chat; the local guide works independently and remains the default.
+
 ## Try it
 
 Requires Python 3.10 or later. No packages or account required for the local examples.
