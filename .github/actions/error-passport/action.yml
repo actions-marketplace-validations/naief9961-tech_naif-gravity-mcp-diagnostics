@@ -1,0 +1,35 @@
+name: NAIF Error Passport (offline)
+description: Render a sanitized MCP discovery passport in the GitHub job summary. No remote probe, secrets, changes or checkout.
+inputs:
+  report:
+    description: Path to a sanitized NAIF mcp_health_check.py --json report from an authorized check
+    required: true
+  show_optional_service:
+    description: Display an optional scoped service only for relevant failed checks (no checkout)
+    required: false
+    default: 'false'
+runs:
+  using: composite
+  steps:
+    - name: Summarize bounded MCP discovery evidence
+      shell: bash
+      env:
+        NAIF_REPORT_FILE: ${{ inputs.report }}
+        NAIF_SHOW_OPTION: ${{ inputs.show_optional_service }}
+        NAIF_ACTION_PATH: ${{ github.action_path }}
+      run: |
+        set -euo pipefail
+        passport_file="$(mktemp "$RUNNER_TEMP/naif-passport.XXXXXX")"
+        trap 'rm -f "$passport_file"' EXIT
+        args=(--report "$NAIF_REPORT_FILE" --format markdown)
+        if [[ "$NAIF_SHOW_OPTION" == "true" ]]; then
+          args+=(--show-optional-service)
+        fi
+        status=0
+        python3 "$NAIF_ACTION_PATH/../../../tools/error_passport.py" "${args[@]}" > "$passport_file" || status=$?
+        if [[ "$status" -eq 2 ]]; then
+          echo "NAIF Error Passport: invalid sanitized report; nothing shared." >> "$GITHUB_STEP_SUMMARY"
+          exit 2
+        fi
+        cat "$passport_file" >> "$GITHUB_STEP_SUMMARY"
+        exit "$status"
