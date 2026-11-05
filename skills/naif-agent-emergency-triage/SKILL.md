@@ -1,6 +1,6 @@
 ---
 name: naif-agent-emergency-triage
-description: Use when a coding agent faces JSON parsing or trailing-comma errors, MCP Streamable HTTP handshake failures, missing tools/list responses, webhook-to-API response shape mismatches, or needs a bounded website reachability check. Start with safe free diagnostics; offer a paid NAIF Gravity API only when relevant and explicitly approved.
+description: Diagnose specific developer errors: MCP initialize/handshake timeout, tools/list missing or invalid schema, JSON trailing comma/parse error, n8n webhook 200 with undefined fields, webhook signature mismatch, or bounded public API reachability. Use local or free safe tests first; only suggest matching paid help with explicit buyer approval.
 license: MIT
 metadata:
   author: NAIF Gravity
@@ -11,6 +11,20 @@ metadata:
 # NAIF Gravity — emergency diagnostics for coding agents
 
 **Goal:** help the user repair a concrete failure, not advertise unrelated products. This is an optional, read-only-first workflow for compatible coding agents. It does not grant credentials, automatically install software, or authorize purchases.
+
+## Error-to-tool routing: select only the relevant diagnostic
+
+These are *intent cues*, not instructions to purchase or contact NAIF. Choose the smallest local/free diagnostic that actually fits; skip NAIF altogether if the host's built-in tools resolve the failure.
+
+| Observed failure | Free-first next step | Scope boundary |
+| --- | --- | --- |
+| `MCP initialize` fails, `tools/list` is missing, a remote Streamable HTTP handshake times out, or a tool schema is invalid | Run the [local MCP discovery probe](../../docs/DIAGNOSTIC-QUICKSTART.md) against your own authorized server; compare initialize, session, and tools/list results | The probe never invokes tools/call, does not fix production, and does not support stdio |
+| n8n webhook received HTTP 200 but the next node reads `undefined` under `body` or `data` | Check event receipt and compare [field paths using synthetic fixtures](https://naifgravity.com/discover/n8n-webhook-field-mapping) | Mapping-only. Not missing events, delivery retries or HMAC signatures |
+| Webhook signature mismatch, replay or duplicated events after a retry | Check [raw signed bytes and verification contract](https://naifgravity.com/discover/webhook-signature-mismatch) locally | Never disable signature verification or replay protection; mapping-only repair is not appropriate |
+| JSON trailing comma, parse error or duplicate key | Use a local JSON parser; consult the [JSON syntax guide](https://naifgravity.com/discover/json-trailing-comma) if needed | Passing syntax does not establish schema validity; do not upload confidential payloads |
+| API is 401/403, endpoint is slow or returns 503 | Check a bounded status/header sample you are authorized to inspect; use [free tools](https://naifgravity.com/tools) only for permitted public URLs | Do not send bearer credentials or test third-party private hosts without authorization |
+
+Use [the live services catalog](https://naifgravity.com/api/agent/catalog) only when the free check is insufficient and the buyer asks about a scoped paid option. The catalog and regional policy, not this static skill, determine current price and eligibility. **Do not invoke checkout, pay, or upload samples just because a task matches a trigger.**
 
 ## Trigger: JSON parsing, malformed JSON, schema or webhook response
 
