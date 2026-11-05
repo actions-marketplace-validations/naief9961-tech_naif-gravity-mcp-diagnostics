@@ -34,7 +34,7 @@ For compatible coding agents, the [free-first emergency-triage Skill](skills/nai
 
 ## NAIF Error Passport — local evidence card (free alpha)
 
-**Current public release:** [v0.2.0 — NAIF Error Passport](https://github.com/naief9961-tech/naif-gravity-mcp-diagnostics/releases/tag/v0.2.0). The official Skills CLI can discover this repository's Skill without installing it: `DISABLE_TELEMETRY=1 npx skills add naief9961-tech/naif-gravity-mcp-diagnostics --list`.
+**Current public release:** [v0.2.1 — NAIF Error Passport](https://github.com/naief9961-tech/naif-gravity-mcp-diagnostics/releases/tag/v0.2.1). Version v0.2.1 corrects the portable Action metadata description limit; the free local diagnostic behavior is unchanged. The official Skills CLI can discover this repository's Skill without installing it: `DISABLE_TELEMETRY=1 npx skills add naief9961-tech/naif-gravity-mcp-diagnostics --list`.
 
 The existing MCP diagnostic probe now has an **opt-in, local Error Passport**. It turns a sanitized discovery report into a small fingerprinted evidence card with free next steps. A healthy result never recommends a paid service; a failed result is a diagnosis, **not** a completed repair. No external logging, payment, tool execution or customer data upload.
 
@@ -54,7 +54,7 @@ The Skill is already in this public repository. Developers using the [skills.sh 
 
 This installs the **Skill instructions**; it does not automatically install the separate Python CLI or run a probe. For the working CLI, clone this repository and use the Error Passport commands above. The current skills CLI requires a supported Node.js version and may collect anonymous installation telemetry unless disabled; consult its documentation before opting in. No installer or buyer contacts are initiated by this README.
 
-For reusable workflows in other GitHub repositories, the [root Error Passport action](action.yml) accepts an existing sanitized JSON report. See the [portable-action instructions](docs/ERROR-PASSPORT.md); it does not probe endpoints automatically and is **not yet published as a GitHub Marketplace listing**.
+For reusable workflows in other GitHub repositories, the [root Error Passport action](action.yml) accepts an existing sanitized JSON report. See the [portable-action instructions](docs/ERROR-PASSPORT.md); it does not probe endpoints automatically and has a separate GitHub Marketplace publication status; **publishing a repository release alone does not prove Marketplace listing**. Check the live Marketplace listing independently.
 
 ## Try it
 
