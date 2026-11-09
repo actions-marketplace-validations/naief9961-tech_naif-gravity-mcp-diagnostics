@@ -2,11 +2,18 @@
 
 # NAIF Gravity MCP Doctor — Free MCP Server Diagnostics
 
-**MCP server not responding? `initialize` times out? `tools/list` fails?** NAIF Gravity MCP Doctor checks the **MCP Streamable HTTP discovery handshake**, JSON-RPC response contracts and basic tool descriptors. It generates a privacy-bounded **NAIF Error Passport** with evidence, a grouping fingerprint and free next steps.
+**MCP server not responding? `initialize` times out? `tools/list` fails?** NAIF Gravity MCP Doctor checks the **Model Context Protocol (MCP) Streamable HTTP discovery handshake**, JSON-RPC response contracts and basic tool descriptors. It generates a privacy-bounded **NAIF Error Passport** with evidence, a grouping fingerprint and free next steps.
 
 **[NAIF Gravity website](https://naifgravity.com/)** · **[PyPI package](https://pypi.org/project/naif-gravity-mcp-doctor/)** · **[npm package](https://www.npmjs.com/package/naif-gravity-mcp-doctor)** · **[Free MCP guides](https://naifgravity.com/discover)** · **[Source and tests](https://github.com/naief9961-tech/naif-gravity-mcp-diagnostics)**
 
 **بالعربية:** أداة NAIF Gravity المجانية لتشخيص أعطال خادم MCP ومشاكل المصافحة و`tools/list` مع تقرير محلي دون رفع أسرارك. [أدلة التشخيص العربية](https://naifgravity.com/ar/discover).
+
+## Start here
+
+- **Try without an account:** [run the local healthy/broken demo](#see-a-healthy-and-a-broken-mcp-response). Python 3.10+, synthetic loopback fixtures, no credentials or external requests.
+- **Diagnose your own MCP server:** [install from PyPI or npm](#install-from-pypi-or-npm), then follow the [quick start](#quick-start). Remote checks require authorization.
+- **Add evidence to a GitHub workflow:** [generate an offline Error Passport](docs/ERROR-PASSPORT.md) from an existing sanitized report. No automatic endpoint probing.
+- **Reproduce a failure or compare an update:** use the [fault lab](#fault-lab-and-issue-drafts) or [before/after discovery guard](#compare-discovery-before-and-after-an-update).
 
 ## Diagnostic contribution: Apache SkyWalking BanyanDB
 
