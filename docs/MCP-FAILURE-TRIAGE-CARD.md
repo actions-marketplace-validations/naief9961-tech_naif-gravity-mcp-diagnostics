@@ -75,7 +75,7 @@ The offline report mode does not contact the store. Remote `--probe` requires `-
 
 ## Discuss a redacted case
 
-Join the developer community: **[NAIF Gravity Discord](https://discord.gg/ZZ9M2uN66)** (invite may expire), then use **#free-triage** for one specific issue or **#mcp-api-webhooks** for technical discussion. No direct messages or sales pitch required.
+Join the developer community: **[NAIF Gravity Discord](https://discord.gg/A2MNvYayfG)** (non-expiring invite; subject to revocation), then use **#free-triage** for one specific issue or **#mcp-api-webhooks** for technical discussion. No direct messages or sales pitch required.
 
 Project: [NAIF Gravity MCP Doctor](https://github.com/naief9961-tech/naif-gravity-mcp-diagnostics) · [NAIF Gravity](https://naifgravity.com/)
 
