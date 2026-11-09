@@ -8,6 +8,14 @@
 
 **بالعربية:** أداة NAIF Gravity المجانية لتشخيص أعطال خادم MCP ومشاكل المصافحة و`tools/list` مع تقرير محلي دون رفع أسرارك. [أدلة التشخيص العربية](https://naifgravity.com/ar/discover).
 
+## Diagnostic contribution: Apache SkyWalking BanyanDB
+
+In [BanyanDB PR #1460](https://github.com/apache/skywalking-banyandb/pull/1460), NAIF Gravity's [manual review and isolated reproduction](https://github.com/apache/skywalking-banyandb/pull/1460#issuecomment-6623639937) identified that the proposed fix still read the database address, host and authentication token before loading `.env`. The PR author, **wanjinhao1**, [corrected the loading order and added two regression tests with the real dotenv loader](https://github.com/apache/skywalking-banyandb/pull/1460#issuecomment-6623863250). The fix was merged on **9 November 2026**.
+
+This was a manual configuration diagnosis, **not a bug automatically detected by MCP Doctor**. The reproduction checked configuration initialization, not a running server's authentication. Credit for implementing the fix belongs to the PR author; this contribution does not imply Apache endorsement.
+
+**Try the free local demo:** see [a healthy and a broken MCP response](#see-a-healthy-and-a-broken-mcp-response). From a complete checkout with Python 3.10+, run `python3 examples/mcp_discovery_demo.py`. It uses synthetic loopback fixtures, requires no account or credentials, and makes no external requests. This separate demo shows MCP discovery checks, not the BanyanDB configuration bug.
+
 ## Install from PyPI or npm
 
 Both packages run the **same Python implementation**. The npm package is a small Node.js launcher and still **requires Python 3.10+**. Neither package installs background services or telemetry.
