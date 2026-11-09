@@ -1,6 +1,6 @@
 # NAIF Error Passport — free-first MCP discovery card
 
-**Status:** public alpha CLI and optional offline GitHub composite action. No npm/PyPI package is published. Python 3.10+ standard library only.
+**Status:** public alpha CLI and optional offline GitHub composite action. The CLI is distributed as **NAIF Gravity MCP Doctor** on [PyPI](https://pypi.org/project/naif-gravity-mcp-doctor/) and [npm](https://www.npmjs.com/package/naif-gravity-mcp-doctor). Both use the same Python 3.10+ implementation; the npm launcher also requires Node.js 20+. See the [package installation guide](PACKAGE-DISTRIBUTION.md).
 
 NAIF Error Passport is a **small, local diagnostic summary**, not a repair engine, security certificate, or marketing tracker. It reuses the existing [MCP discovery probe](../tools/mcp_health_check.py) and its already-sanitized JSON. It does not send server responses, credentials, endpoint URLs, tool names, or payloads to NAIF Gravity. It does not execute tools/call, open checkout, edit repositories, or publish an issue.
 
