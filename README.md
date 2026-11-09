@@ -10,6 +10,7 @@
 
 ## Start here
 
+- **Find the failing boundary:** [one-page MCP Failure Triage Card](docs/MCP-FAILURE-TRIAGE-CARD.md) — classify connection, discovery, invocation and output evidence safely; discuss a redacted case on Discord.
 - **Try without an account:** [run the local healthy/broken demo](#see-a-healthy-and-a-broken-mcp-response). Python 3.10+, synthetic loopback fixtures, no credentials or external requests.
 - **Diagnose your own MCP server:** [install from PyPI or npm](#install-from-pypi-or-npm), then follow the [quick start](#quick-start). Remote checks require authorization.
 - **Add evidence to a GitHub workflow:** [generate an offline Error Passport](docs/ERROR-PASSPORT.md) from an existing sanitized report. No automatic endpoint probing.
