@@ -8,6 +8,8 @@
 
 **بالعربية:** أداة NAIF Gravity المجانية لتشخيص أعطال خادم MCP ومشاكل المصافحة و`tools/list` مع تقرير محلي دون رفع أسرارك. [أدلة التشخيص العربية](https://naifgravity.com/ar/discover).
 
+**Not an MCP issue?** Find the right free-first path for [JSON syntax, API response drift, n8n webhooks, CSV and Docker diagnostics in the NAIF Gravity product directory](https://github.com/naief9961-tech/ai-growth-engine/blob/main/PRODUCTS.md). MCP Doctor does not claim to repair those unrelated failures.
+
 ## Start here
 
 - **Find the failing boundary:** [one-page MCP Failure Triage Card](docs/MCP-FAILURE-TRIAGE-CARD.md) — classify connection, discovery, invocation and output evidence safely; discuss a redacted case on Discord.
